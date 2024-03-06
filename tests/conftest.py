@@ -2,6 +2,18 @@
 Global pytest configuration.
 """
 
-from dotenv import load_dotenv
+import litestar
+import pytest
 
-load_dotenv(".env.local", override=True)
+from src import bootstrap
+
+
+@pytest.fixture
+def app() -> litestar.Litestar:
+    postgres_uri = "postgres://postgres:postgres@localhost:5432/postgres"
+    log_level = "debug"
+    app = bootstrap.create_app(
+        postgres_uri=postgres_uri,
+        log_level=log_level,
+    )
+    return app

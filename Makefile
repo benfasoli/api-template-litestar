@@ -62,7 +62,7 @@ start-dev: infra  ## Run local development webserver in debug mode.
 	@echo
 	@echo 🚀 Visit the OpenAPI Swagger docs: http://127.0.0.1:8000/schema
 	@echo
-	@.venv/bin/dotenv --file .env.local run -- .venv/bin/litestar --app=src.app:init_app run --debug --reload
+	.venv/bin/litestar --app=src.app:app run --debug --reload
 
 .PHONY: test
 test:  ## Run tests.

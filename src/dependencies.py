@@ -9,10 +9,10 @@ from src.database import Database
 def db_provider_factory(
     postgres_uri: str,
 ) -> Callable[[], AsyncIterator[Database]]:
-    """Litestar adapter providing closure over postgres_uri."""
+    """Litestar adapter as a closure, since providers can't take arguments."""
 
     async def db_provider() -> AsyncIterator[Database]:
-        """Litestar interface adapter to manage connection lifecycle per-request."""
+        """Manage connection lifecycle per-request."""
         conn = await psycopg.AsyncConnection.connect(postgres_uri, row_factory=dict_row)
         db = Database(conn)
         try:
