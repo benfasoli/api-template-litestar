@@ -1,0 +1,3 @@
+CREATE TABLE noop (
+    id UUID PRIMARY KEY
+);

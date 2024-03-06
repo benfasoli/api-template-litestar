@@ -1,0 +1,7 @@
+"""
+Global pytest configuration.
+"""
+
+from dotenv import load_dotenv
+
+load_dotenv(".env.local", override=True)

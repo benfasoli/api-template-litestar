@@ -1,0 +1,40 @@
+name: Integration test
+
+on: pull_request
+
+jobs:
+  test:
+    name: Lint and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: make install
+
+      - name: Check formatting
+        run: make check-format
+
+      - name: Lint
+        run: make check-lint
+
+      - name: Check types
+        run: make check-types
+
+      - name: Start dependencies
+        run: make dependencies
+
+      - name: Test
+        run: make test
+
+      - name: Build
+        run: make build
