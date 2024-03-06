@@ -11,3 +11,6 @@ class GetIndexResponseDTO:
 @get(path="/")
 async def get_index() -> GetIndexResponseDTO:
     return GetIndexResponseDTO(message="🚀")
+
+
+handlers = [get_index]

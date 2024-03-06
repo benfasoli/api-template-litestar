@@ -5,8 +5,8 @@ from litestar.di import Provide
 from litestar.openapi import OpenAPIConfig
 
 from . import dependencies
-from .api.health import handlers as health_handlers
-from .api.index import handlers as index_handlers
+from .api.health.handlers import handlers as health_handlers
+from .api.index.handlers import handlers as index_handlers
 
 
 def _configure_logger(level: str) -> None:
@@ -20,8 +20,8 @@ def create_app(postgres_uri: str, log_level: str) -> Litestar:
 
     app = Litestar(
         route_handlers=[
-            health_handlers.get_health,
-            index_handlers.get_index,
+            *health_handlers,
+            *index_handlers,
         ],
         dependencies=dict(db=Provide(db_provider)),
         openapi_config=OpenAPIConfig(
