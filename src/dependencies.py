@@ -6,7 +6,7 @@ from psycopg.rows import dict_row
 from src.database import Database
 
 
-def db_provider_factory(
+def create_db_provider(
     postgres_uri: str,
 ) -> Callable[[], AsyncIterator[Database]]:
     """Litestar adapter as a closure, since providers can't take arguments."""
