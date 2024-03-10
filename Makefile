@@ -28,17 +28,17 @@ check: check-format check-lint check-types ## Run static analysis formatting, li
 	
 .PHONY: clean
 clean: clean-infra  ## Remove development artifacts and containers.
-	@rm -fr .venv
-	@rm -fr build
-	@find . -name '*~' -exec rm -f {} +
-	@find . -name '*.pyc' -exec rm -f {} +
-	@find . -name '*.pyo' -exec rm -f {} +
-	@find . -name '*.egg-info' -exec rm -fr {} +
-	@find . -name '__pycache__' -exec rm -fr {} +
-	@find . -name '.coverage' -exec rm -fr {} +
-	@find . -name '.mypy_cache' -exec rm -fr {} +
-	@find . -name '.pytest_cache' -exec rm -fr {} +
-	@find . -name '.ruff_cache' -exec rm -fr {} +
+	@rm -f .coverage
+	@rm -rf .mypy_cache
+	@rm -rf .pytest_cache
+	@rm -rf .ruff_cache
+	@rm -rf .venv
+	@rm -rf build
+	@rm -rf `find . -name __pycache__`
+	@rm -rf `find . -name *.egg-info`
+	@rm -f `find . -type f -name '*~'`
+	@rm -f `find . -type f -name '*.pyc'`
+	@rm -f `find . -type f -name '*.pyo'`
 
 .PHONY: clean-infra
 clean-infra:  ## Stop local infrastructure background containers.
