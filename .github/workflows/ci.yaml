@@ -30,8 +30,8 @@ jobs:
       - name: Check types
         run: make check-types
 
-      - name: Start dependencies
-        run: make dependencies
+      - name: Start local infra
+        run: make infra
 
       - name: Test
         run: make test
