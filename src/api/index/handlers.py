@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from litestar import get
+from litestar import Router, get
 
 
 @dataclass
@@ -13,4 +13,4 @@ async def get_index() -> GetIndexResponseDTO:
     return GetIndexResponseDTO(message="🚀")
 
 
-handlers = [get_index]
+router = Router(path="/", route_handlers=[get_index])
