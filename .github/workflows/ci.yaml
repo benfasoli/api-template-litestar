@@ -24,7 +24,7 @@ jobs:
       - name: Check formatting
         run: make check-format
 
-      - name: Lint
+      - name: Check linting
         run: make check-lint
 
       - name: Check types
