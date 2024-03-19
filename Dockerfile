@@ -1,5 +1,6 @@
 FROM python:3.12-slim-bookworm
 
+ENV PORT 8080
 ENV PYTHONUNBUFFERED 1
 ENV TZ UTC
 
@@ -15,4 +16,4 @@ RUN pip install .
 
 COPY . .
 ENTRYPOINT ["tini", "--"]
-CMD [ "litestar", "--app=src.app:app", "run",  "--host=0.0.0.0", "--port=8000"]
+CMD [ "uvicorn", "run",  "--host=0.0.0.0", "--port=${PORT}", "src.app:app"]
