@@ -72,4 +72,4 @@ test:  ## Run tests.
 
 .PHONY: version
 version:  ## Print current version from pyproject.toml to stdout
-	@.venv/bin/python -m src.version
+	@yq -oy '.project.version' pyproject.toml
