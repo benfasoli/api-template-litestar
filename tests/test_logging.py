@@ -17,7 +17,7 @@ def test_message_formatted_as_json(capsys: CaptureFixture[str]) -> None:
     assert stdout == ""
 
     expected_record = {
-        "timestamp": mock.ANY,
+        "time": mock.ANY,
         "severity": "INFO",
         "message": "message content",
         "module": "tests.test_logging",
